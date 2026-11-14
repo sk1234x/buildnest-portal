@@ -5,34 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - BuildNest</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #222; }
-        h1, h2 { color: #1a73e8; }
-        footer { margin-top: 60px; font-size: 0.9em; color: #666; border-top: 1px solid #eee; padding-top: 20px; }
-        footer a { color: #1a73e8; text-decoration: none; margin-right: 15px; }
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #1557b0;
+            --text-main: #202124;
+            --text-muted: #5f6368;
+            --border: #dadce0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 860px;
+            margin: 40px auto;
+            padding: 0 24px;
+            color: var(--text-main);
+            background-color: #ffffff;
+        }
+        header {
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 { color: var(--primary); margin-bottom: 8px; }
+        h2 { color: var(--primary-dark); margin-top: 32px; font-size: 1.3rem; }
+        p, li { color: #3c4043; font-size: 1rem; }
+        ul { padding-left: 20px; }
+        .last-updated { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
+        footer {
+            margin-top: 60px;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: 500;
+        }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <h1>Privacy Policy</h1>
-    <p><em>Last updated: October 2026</em></p>
-    
-    <h2>1. Overview</h2>
-    <p>BuildNest ("we", "our", or "us") provides personal utilities and media streaming integrations for personal use. We respect your privacy and are committed to protecting it.</p>
+    <header>
+        <h1>Privacy Policy</h1>
+        <div class="last-updated">Last Updated: November 2026</div>
+    </header>
 
-    <h2>2. Information Collection and Use</h2>
-    <p>Our applications interface with cloud storage services (such as Google Drive) strictly to stream or access your personal files upon your authorization. We do not sell, rent, or trade your personal information.</p>
+    <h2>1. Introduction</h2>
+    <p>Welcome to BuildNest ("we," "our," or "us"). We specialize in web and mobile application development, digital software tools, and cloud-connected utilities. We are committed to safeguarding user privacy and handling information transparently and responsibly.</p>
 
-    <h2>3. Google User Data</h2>
-    <p>When you authorize our application to access your Google account, the application accesses your files solely for reading and streaming your authorized media. OAuth credentials and tokens remain under your personal control and are never transmitted to third-party commercial servers.</p>
+    <h2>2. Scope of this Policy</h2>
+    <p>This Privacy Policy applies to all applications, software tools, websites, and digital services operated by BuildNest. It outlines how we handle user data when you access or interact with our software products.</p>
 
-    <h2>4. Data Retention and Security</h2>
-    <p>Any tokens or configuration parameters are stored locally on your authorized devices. We implement industry-standard safeguards to secure any temporary session data.</p>
+    <h2>3. Information We Collect</h2>
+    <p>Depending on the specific application or service you use, we may collect or process the following information:</p>
+    <ul>
+        <li><strong>Account & Contact Information:</strong> Voluntary details you provide when contacting us or creating an account, such as your email address.</li>
+        <li><strong>Application Configuration Data:</strong> User-defined preferences, device settings, and operational parameters necessary to maintain application functionality.</li>
+        <li><strong>Technical & Diagnostic Data:</strong> Basic anonymized crash reports, software version metrics, and error logs used exclusively for performance troubleshooting and quality assurance.</li>
+    </ul>
 
-    <h2>5. Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, you may contact us at support@buildnest.buzz.</p>
+    <h2>4. Third-Party Services and API Integrations</h2>
+    <p>Some BuildNest applications enable users to optionally connect third-party platforms and cloud services via standard, authorized APIs (such as OAuth 2.0). In such scenarios:</p>
+    <ul>
+        <li>Access is initiated strictly upon your explicit authorization and consent.</li>
+        <li>Authentication tokens are securely held on your authorized local devices or designated environments.</li>
+        <li>We never sell, rent, monetize, or disclose your third-party account credentials or user data to advertisers or unrelated third parties.</li>
+    </ul>
+
+    <h2>5. How We Use Information</h2>
+    <p>We process information solely to:</p>
+    <ul>
+        <li>Deliver, operate, and maintain application functionality.</li>
+        <li>Respond to user inquiries, technical support requests, and feedback.</li>
+        <li>Detect, resolve, and prevent software bugs, technical defects, and security vulnerabilities.</li>
+    </ul>
+
+    <h2>6. Data Storage & Security</h2>
+    <p>We implement industry-standard technical, administrative, and organizational safeguards to protect information against unauthorized access, loss, or alteration. Sensitive configuration parameters and session tokens remain under the user's direct oversight within their authorized software environments.</p>
+
+    <h2>7. User Control & Data Retention</h2>
+    <p>You maintain full control over your data. You may disconnect third-party integrations, reset local application data, or revoke service authorizations at any time. We retain data only for as long as necessary to fulfill the operational purposes described in this policy.</p>
+
+    <h2>8. Updates to this Policy</h2>
+    <p>We may periodically update this Privacy Policy to reflect advancements in our technology, operational practices, or legal requirements. Updated versions will be published on this page with an updated revision date.</p>
+
+    <h2>9. Contact Us</h2>
+    <p>If you have questions, feedback, or concerns regarding this Privacy Policy or our software practices, please reach out to us at:</p>
+    <p><strong>Email:</strong> <a href="mailto:hello@buildnest.buzz" style="color: var(--primary);">hello@buildnest.buzz</a></p>
 
     <footer>
-        <a href="index.html">Home</a>
-        <a href="terms.html">Terms of Service</a>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
         <p>&copy; 2026 BuildNest. All rights reserved.</p>
     </footer>
 </body>
