@@ -1,0 +1,44 @@
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Agent Metadata & Orchestration Workspaces (Confidential internal agent state)
+.agents/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Root and Node Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Subdirectory: Flow Application Build & Dependency Artifacts
+node_modules/
+flow/node_modules/
+flow/.next/
+flow/out/
+flow/build/
+flow/dist/
+flow/coverage/
+flow/.turbo/
+flow/.vercel/
+flow/.netlify/
+flow/*.tsbuildinfo
+
+# Environment Secrets (Root & Flow, preserve .env.example)
+.env*
+!.env.example
+flow/.env*
+!flow/.env.example
