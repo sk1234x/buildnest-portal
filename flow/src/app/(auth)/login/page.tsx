@@ -4,6 +4,8 @@ import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
+import { BrandLogo } from '@/components/BrandLogo';
+import { URLCleaner } from '@/components/URLCleaner';
 
 function LoginFormContent() {
   const router = useRouter();
@@ -117,20 +119,21 @@ function LoginFormContent() {
 
   return (
     <div className="flex min-h-[80vh] items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+      <URLCleaner />
       <div className="w-full max-w-md rounded-2xl border border-border bg-card p-8 shadow-xl">
         <div className="text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground"
+            className="inline-flex items-center gap-2 text-xl font-bold tracking-tight text-foreground"
           >
-            <span className="flex h-3 w-3 rounded-full bg-emerald-500" />
+            <BrandLogo className="h-6 w-6" />
             Flow
           </Link>
           <h1 className="mt-4 text-2xl font-bold tracking-tight text-foreground">
             {activeTab === 'signin' ? 'Welcome Back' : 'Join Private Preview'}
           </h1>
           <p className="mt-1 text-xs text-muted-foreground">
-            Circadian Momentum &bull; Anti-Procrastination &bull; Invite-Only
+            Private Preview &bull; Invite Only
           </p>
         </div>
 
@@ -300,7 +303,7 @@ function LoginFormContent() {
         </form>
 
         <p className="mt-6 text-center text-xs text-muted-foreground">
-          Whitelisted accounts only &bull;{' '}
+          Invite only access &bull;{' '}
           <Link href="/" className="underline hover:text-foreground">
             Back to Home
           </Link>

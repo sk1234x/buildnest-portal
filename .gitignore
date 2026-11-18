@@ -35,6 +35,7 @@ flow/coverage/
 flow/.turbo/
 flow/.vercel/
 flow/.netlify/
+.netlify/
 flow/*.tsbuildinfo
 
 # Environment Secrets (Root & Flow, preserve .env.example)

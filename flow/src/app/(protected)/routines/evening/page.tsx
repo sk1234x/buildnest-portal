@@ -86,25 +86,6 @@ export default function EveningShutdownPage() {
         onCompleteShutdown={handleCompleteShutdown}
         onTaskStatusChange={handleTaskStatusChange}
       />
-
-      {/* Return to Dashboard */}
-      <div className="rounded-2xl border border-border bg-card p-6 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h3 className="text-sm font-bold text-foreground">
-            Daily Loop Completed
-          </h3>
-          <p className="mt-0.5 text-xs text-muted-foreground">
-            Return to your dashboard overview to view overall daily progress.
-          </p>
-        </div>
-
-        <Link
-          href="/dashboard"
-          className="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-card px-5 text-xs font-semibold text-foreground hover:bg-muted/50 transition"
-        >
-          &larr; Return to Dashboard
-        </Link>
-      </div>
     </div>
   );
 }

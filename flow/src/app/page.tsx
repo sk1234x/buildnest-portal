@@ -1,76 +1,95 @@
 import Link from 'next/link';
+import { BrandLogo } from '@/components/BrandLogo';
 
 export default function HomePage() {
   return (
-    <div className="relative overflow-hidden">
-      {/* Background radial gradients */}
+    <div className="relative overflow-hidden flex flex-col flex-1">
+      {/* Dedicated Marketing Header */}
+      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="flex items-center gap-2.5">
+            <BrandLogo className="h-7 w-7" />
+            <span className="text-lg font-bold tracking-tight text-foreground">
+              Flow
+            </span>
+          </Link>
+
+          <nav className="flex items-center gap-3">
+            <Link
+              href="/login"
+              className="rounded-lg px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Sign In
+            </Link>
+            <Link
+              href="/dashboard"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90"
+            >
+              Get Started
+            </Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* Background soft ambient gradient */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-primary/15 via-blue-400/10 to-teal-300/10 blur-3xl"
+        className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-indigo-500/10 via-sky-400/10 to-teal-300/10 blur-3xl"
       />
 
       {/* Hero Section */}
-      <section className="mx-auto max-w-7xl px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
-            Neuroscience-Backed Routine Architecture
-          </div>
+      <section className="mx-auto max-w-5xl px-4 pt-16 pb-16 text-center sm:px-6 lg:px-8 lg:pt-24 lg:pb-24">
+        <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl sm:leading-tight">
+          Flow — Activity Planner
+        </h1>
 
-          <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl sm:leading-tight">
-            Flow — Activity Planner
-          </h1>
+        <p className="mt-4 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+          Find your rhythm.{' '}
+          <span className="bg-gradient-to-r from-indigo-600 via-sky-500 to-teal-500 bg-clip-text text-transparent dark:from-indigo-400 dark:to-teal-400">
+            Build steady momentum.
+          </span>
+        </p>
 
-          <p className="mt-4 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-            Break Inertia.{' '}
-            <span className="bg-gradient-to-r from-primary via-indigo-500 to-teal-500 bg-clip-text text-transparent">
-              Build Momentum.
-            </span>{' '}
-            Flow.
-          </p>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          A calm, flexible space to structure your day around energy, not rigid clock-time.
+          Focus on what matters most, take small gentle steps, and make progress without the overwhelm.
+        </p>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-            The anti-procrastination activity planner designed to defeat executive dysfunction.
-            Replace rigid, anxiety-inducing 24-hour timeblocking with 3 Circadian Anchor Routines
-            and an instant 2-to-5 minute panic activation action.
-          </p>
-
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/dashboard"
-              className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-primary px-8 text-base font-semibold text-primary-foreground shadow-md transition-all hover:bg-primary/90 hover:shadow-lg sm:w-auto"
-            >
-              Enter Application
-            </Link>
-            <Link
-              href="/login"
-              className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-border bg-card px-8 text-base font-semibold text-foreground shadow-sm transition-all hover:bg-accent hover:text-accent-foreground sm:w-auto"
-            >
-              Sign In with Google / Email
-            </Link>
-          </div>
-
-          <p className="mt-3 text-xs text-muted-foreground">
-            Invite-only &bull; Whitelisted access control &bull; Zero paid billing dependencies
-          </p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Link
+            href="/dashboard"
+            className="inline-flex h-11 w-full items-center justify-center rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 sm:w-auto"
+          >
+            Get Started
+          </Link>
+          <Link
+            href="/login"
+            className="inline-flex h-11 w-full items-center justify-center rounded-xl border border-border bg-card px-7 text-sm font-semibold text-foreground shadow-sm transition-all hover:bg-accent sm:w-auto"
+          >
+            Sign In
+          </Link>
         </div>
+
+        <p className="mt-4 text-xs font-medium text-muted-foreground">
+          Private Preview &bull; Invite Only
+        </p>
       </section>
 
       {/* 3 Daily Anchor Routines Showcase */}
-      <section className="border-t border-border bg-card/40 py-20">
+      <section className="border-t border-border bg-card/40 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               3 Daily Anchor Routines
             </h2>
-            <p className="mt-2 text-sm text-muted-foreground sm:text-base">
-              Circadian scaffolding that adapts to energy levels instead of rigid calendar hours.
+            <p className="mt-2 text-sm text-muted-foreground">
+              A balanced rhythm that adapts to how you feel, replacing rigid schedules with clarity.
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
             {/* Anchor 1: Morning Launchpad */}
-            <div className="relative rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-amber-400/50 hover:shadow-md">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-xl font-bold text-amber-500">
                 🌅
               </div>
@@ -78,19 +97,15 @@ export default function HomePage() {
                 1. Morning Launchpad
               </h3>
               <p className="mt-1 text-xs font-medium text-amber-600 dark:text-amber-400">
-                Low-Friction Awakening &amp; Clarity
+                Calm Start &amp; Daily Focus
               </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Hydration check, 1-5 energy assessment, and selection of your Single Keystone Focus
-                plus up to 2 secondary tasks (Rule of 3).
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                Check in with your morning energy and commit to one single Keystone priority for the day, keeping your mind clear and intentional.
               </p>
-              <div className="mt-4 rounded-lg bg-muted/60 p-3 text-xs text-muted-foreground">
-                <span className="font-semibold text-foreground">Key Ritual:</span> Energy Check-In &amp; Keystone Commitment.
-              </div>
             </div>
 
             {/* Anchor 2: Day Momentum Block */}
-            <div className="relative rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-indigo-400/50 hover:shadow-md">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10 text-xl font-bold text-indigo-500">
                 ⚡
               </div>
@@ -98,19 +113,15 @@ export default function HomePage() {
                 2. Day Momentum Block
               </h3>
               <p className="mt-1 text-xs font-medium text-indigo-600 dark:text-indigo-400">
-                Focus Sprints &amp; Flow State
+                Focused Sprints &amp; Active Resets
               </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Single-task focus view, Pomodoro sprint pacing, real-time logging, and one-tap access
-                to the panic button if executive paralysis strikes.
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                Work in focused, distraction-free blocks with built-in micro-breaks to keep your body active and your mind refreshed.
               </p>
-              <div className="mt-4 rounded-lg bg-muted/60 p-3 text-xs text-muted-foreground">
-                <span className="font-semibold text-foreground">Key Ritual:</span> 25-Min Focus Sprint &amp; Distraction Shield.
-              </div>
             </div>
 
             {/* Anchor 3: Evening Shutdown */}
-            <div className="relative rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-teal-400/50 hover:shadow-md">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-500/10 text-xl font-bold text-teal-500">
                 🌙
               </div>
@@ -118,90 +129,43 @@ export default function HomePage() {
                 3. Evening Shutdown
               </h3>
               <p className="mt-1 text-xs font-medium text-teal-600 dark:text-teal-400">
-                Zeigarnik Loop Closure &amp; Rest
+                Reflection &amp; Rest
               </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Celebrate micro-wins, defer remaining items guilt-free to tomorrow, set tomorrow&apos;s
-                anchor, and formally shut down mental work loops.
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                Acknowledge today&apos;s small wins, roll unfinished items to tomorrow without guilt, and step away from work with true closure.
               </p>
-              <div className="mt-4 rounded-lg bg-muted/60 p-3 text-xs text-muted-foreground">
-                <span className="font-semibold text-foreground">Key Ritual:</span> Guilt-Free Deferral &amp; Shutdown Complete.
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* "Unstick Me" Panic Button Showcase */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-rose-500/20 bg-gradient-to-b from-rose-500/5 via-card to-card p-8 sm:p-12">
-            <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+      {/* "Unstick Me" Feature Showcase */}
+      <section className="py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-indigo-500/20 bg-card p-8 sm:p-10 shadow-sm">
+            <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
               <div className="max-w-xl text-center md:text-left">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/10 px-3 py-1 text-xs font-semibold text-rose-600 dark:text-rose-400">
-                  <span>🚨</span> Inertia-Breaking Panic Action
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+                  Instant Inertia Breaker
                 </span>
-                <h2 className="mt-4 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Paralyzed by Overwhelm? Press &quot;Unstick Me&quot;.
+                <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground">
+                  Feeling Stuck? Tap &quot;Unstick Me&quot;.
                 </h2>
-                <p className="mt-3 text-base text-muted-foreground">
-                  When you cannot start, planning is your enemy. The panic action bypasses your schedule
-                  and gives you exactly ONE 2-to-5 minute somatic or atomic action to get your hands moving.
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  When starting feels hard, planning only causes resistance. The Unstick Me action gives you one simple 2-to-5 minute activation task—a quick stretch, a glass of water, or opening one document—to get momentum moving effortlessly.
                 </p>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">&check;</span> Deterministic 30+ neuroscience micro-activation catalog (&lt;10ms latency).
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">&check;</span> Optional Free-Tier Gemini 1.5 Flash AI integration with circuit breaker.
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">&check;</span> Circular countdown timer with zero guilt.
-                  </li>
-                </ul>
               </div>
 
-              {/* Mock Panic Activation Card */}
-              <div className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-lg">
-                <div className="flex items-center justify-between border-b border-border pb-3">
-                  <span className="text-xs font-semibold tracking-wide uppercase text-rose-500">
-                    Sample Activation Task
-                  </span>
-                  <span className="rounded-full bg-rose-500/10 px-2 py-0.5 text-xs font-bold text-rose-600 dark:text-rose-400">
-                    180 Seconds
-                  </span>
-                </div>
-                <h4 className="mt-3 text-base font-bold text-foreground">
-                  The Cold Water &amp; Shoulder Roll Reset
-                </h4>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                  &quot;Stand up immediately. Walk to the sink, pour a full glass of cold water, drink it in 5 slow sips, and do 10 backward shoulder rolls.&quot;
-                </p>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-[11px] text-muted-foreground">Category: Physical Somatic</span>
-                  <Link
-                    href="/dashboard"
-                    className="rounded-lg bg-rose-500 px-3 py-1.5 text-xs font-semibold text-white shadow transition-colors hover:bg-rose-600"
-                  >
-                    Try in App &rarr;
-                  </Link>
-                </div>
+              <div className="flex flex-col items-center">
+                <Link
+                  href="/dashboard"
+                  className="inline-flex h-11 items-center justify-center rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition"
+                >
+                  Try Unstick Me &rarr;
+                </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Security & Access Banner */}
-      <section className="border-t border-border bg-card/60 py-12">
-        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-          <h3 className="text-base font-semibold text-foreground">
-            Whitelisted Access &amp; Zero Paid Infrastructure
-          </h3>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Strict server-side route guards intercept unauthenticated visitors before any private UI or data leaks.
-            Runs 100% on Netlify Free Tier, Supabase PostgreSQL, and Google OAuth under the verified buildnest.buzz project umbrella.
-          </p>
         </div>
       </section>
     </div>

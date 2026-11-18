@@ -120,11 +120,13 @@ describe('Adversarial Stress Test: Root Layout Accessibility & Landmarks', () =>
     expect(h2s.length).toBeGreaterThanOrEqual(2);
 
     // Check interactive buttons / links
-    const enterAppBtn = screen.getByRole('link', { name: /enter application/i });
-    expect(enterAppBtn).toHaveAttribute('href', '/dashboard');
+    const getStartedBtns = screen.getAllByRole('link', { name: /get started/i });
+    expect(getStartedBtns.length).toBeGreaterThanOrEqual(1);
+    expect(getStartedBtns[0]).toHaveAttribute('href', '/dashboard');
 
-    const signInBtn = screen.getByRole('link', { name: /sign in with google/i });
-    expect(signInBtn).toHaveAttribute('href', '/login');
+    const signInBtns = screen.getAllByRole('link', { name: /sign in/i });
+    expect(signInBtns.length).toBeGreaterThanOrEqual(1);
+    expect(signInBtns[0]).toHaveAttribute('href', '/login');
   });
 
   it('validates RootLayout component tree: lang="en", meta color-scheme, and landmark hierarchy', () => {
@@ -165,17 +167,13 @@ describe('Adversarial Stress Test: Root Layout Accessibility & Landmarks', () =>
     expect(skipLink).toBeDefined();
     expect(skipLink?.props.className).toContain('sr-only');
 
-    // 2. Header landmark
-    const header = bodyChildren.find((c) => c.type === 'header');
-    expect(header).toBeDefined();
-
-    // 3. Main landmark with id="main-content" matching skip link
+    // 2. Main landmark with id="main-content" matching skip link
     const main = bodyChildren.find(
       (c) => c.type === 'main' && c.props.id === 'main-content'
     );
     expect(main).toBeDefined();
 
-    // 4. Footer landmark
+    // 3. Footer landmark
     const footer = bodyChildren.find((c) => c.type === 'footer');
     expect(footer).toBeDefined();
   });

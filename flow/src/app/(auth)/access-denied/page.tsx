@@ -15,10 +15,10 @@ export default function AccessDeniedPage() {
 
         <div className="mt-4 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 text-left">
           <p className="text-sm font-medium text-foreground">
-            Account Not Whitelisted
+            Access Pending
           </p>
           <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-            Your Google or email account authenticated successfully, but this account has not been
+            Your account authenticated successfully, but has not been
             granted access to the <strong>Flow</strong> private preview yet.
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function AccessDeniedPage() {
           <p className="font-semibold text-foreground">How to gain access:</p>
           <ul className="list-disc pl-5 space-y-1">
             <li>Request an invite by emailing <a href="mailto:hello@buildnest.buzz" className="text-primary underline hover:text-primary/80">hello@buildnest.buzz</a>.</li>
-            <li>If you were invited under an alternate address, sign in using that whitelisted email.</li>
+            <li>If you were invited under an alternate address, sign in using that email.</li>
           </ul>
         </div>
 
@@ -47,7 +47,7 @@ export default function AccessDeniedPage() {
         </div>
 
         <p className="mt-6 text-[11px] text-muted-foreground">
-          Protected by BuildNest Edge Gatekeeper &bull; Zero Private Data Emitted
+          Flow &bull; Private Preview
         </p>
       </div>
     </div>

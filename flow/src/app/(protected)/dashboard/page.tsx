@@ -23,12 +23,8 @@ export default async function DashboardPage() {
       {/* Session Header */}
       <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm md:flex-row md:items-center">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
-            Whitelisted Session Active
-          </div>
-          <h1 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            Activity Planner Dashboard
+          <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            Today&apos;s Rhythm
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Signed in as <span className="font-medium text-foreground">{userEmail}</span>
@@ -59,7 +55,7 @@ export default async function DashboardPage() {
             Morning Launchpad
           </h2>
           <p className="mt-1 text-xs text-muted-foreground">
-            Energy check-in (1-5), keystone focus, and Rule of 3 task setup.
+            Energy check-in, keystone focus, and 3 gentle daily priorities.
           </p>
           <div className="mt-6">
             <Link
@@ -83,7 +79,7 @@ export default async function DashboardPage() {
             Day Momentum Block
           </h2>
           <p className="mt-1 text-xs text-muted-foreground">
-            Single-task focus sprint view, Pomodoro pacing, and panic recovery.
+            Single-task focus sprint, Pomodoro rhythm, and quick resets.
           </p>
           <div className="mt-6">
             <Link
@@ -107,7 +103,7 @@ export default async function DashboardPage() {
             Evening Shutdown
           </h2>
           <p className="mt-1 text-xs text-muted-foreground">
-            Celebrate micro-wins, guilt-free deferrals, and loop closure.
+            Celebrate daily progress, reschedule guilt-free, and rest.
           </p>
           <div className="mt-6">
             <Link
