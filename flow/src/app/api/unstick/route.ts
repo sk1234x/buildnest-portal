@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { assertAuthenticatedAndWhitelisted } from '@/lib/auth/whitelist';
 import { executeUnstickWithBreaker } from '@/lib/unstick/circuit-breaker';
 import { getDeterministicFallback } from '@/lib/unstick/catalog';
+import { isPublicUnstickEnabled } from '@/lib/config/features';
 import type { UnstickRequest } from '@/lib/unstick/types';
 
 export const dynamic = 'force-dynamic';
@@ -10,24 +11,27 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   const startTime = Date.now();
 
   // 1. Security Gatekeeper: Boundary 3 Server Guard
-  try {
-    await assertAuthenticatedAndWhitelisted();
-  } catch (authError: any) {
-    const errorMsg = String(authError?.message || '');
-    if (
-      errorMsg.includes('Forbidden') ||
-      errorMsg.includes('not whitelisted') ||
-      errorMsg.includes('Whitelist Access Required')
-    ) {
+  // When public unstick feature flag is enabled, bypass authentication guard
+  if (!isPublicUnstickEnabled()) {
+    try {
+      await assertAuthenticatedAndWhitelisted();
+    } catch (authError: any) {
+      const errorMsg = String(authError?.message || '');
+      if (
+        errorMsg.includes('Forbidden') ||
+        errorMsg.includes('not whitelisted') ||
+        errorMsg.includes('Whitelist Access Required')
+      ) {
+        return NextResponse.json(
+          { error: 'Forbidden: Whitelist Access Required' },
+          { status: 403 }
+        );
+      }
       return NextResponse.json(
-        { error: 'Forbidden: Whitelist Access Required' },
-        { status: 403 }
+        { error: 'Unauthorized' },
+        { status: 401 }
       );
     }
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    );
   }
 
   // 2. Safe Payload Extraction: Never crash on empty or non-JSON payloads

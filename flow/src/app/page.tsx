@@ -158,7 +158,7 @@ export default function HomePage() {
 
               <div className="flex flex-col items-center">
                 <Link
-                  href="/dashboard"
+                  href="/unstick?from=home"
                   className="inline-flex h-11 items-center justify-center rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition"
                 >
                   Try Unstick Me &rarr;

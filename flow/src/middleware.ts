@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { createMiddlewareClient } from '@/lib/supabase/middleware';
 import { isEmailWhitelisted } from '@/lib/auth/whitelist';
+import { isPublicUnstickEnabled } from '@/lib/config/features';
 
 // Routes requiring an authenticated session AND whitelisted email
 const PROTECTED_PREFIXES = [
@@ -19,9 +20,13 @@ export async function middleware(request: NextRequest) {
   const { supabase, response } = createMiddlewareClient(request);
 
   const pathname = request.nextUrl.pathname;
-  const isProtected = PROTECTED_PREFIXES.some((prefix) =>
-    pathname.startsWith(prefix)
-  );
+  const isUnstickRoute = pathname.startsWith('/unstick') || pathname.startsWith('/api/unstick');
+  const allowPublicUnstick = isPublicUnstickEnabled();
+
+  const isProtected =
+    PROTECTED_PREFIXES.some((prefix) => pathname.startsWith(prefix)) &&
+    !(allowPublicUnstick && isUnstickRoute);
+
   const isAuthRoute = AUTH_PREFIXES.some((prefix) =>
     pathname.startsWith(prefix)
   );

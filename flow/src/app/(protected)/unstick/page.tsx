@@ -3,6 +3,7 @@
 import React, { useState, useEffect, Suspense, useCallback } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
 import type { RoutineSlug } from '@/lib/routines/types';
 import type { MicroActivationCategory, MicroActivationTask, UnstickRequest } from '@/lib/unstick/types';
 import { getDeterministicFallback, getFallbackTask } from '@/lib/unstick/catalog';
@@ -52,22 +53,48 @@ function UnstickContent() {
   const energyLevel = energyParam ? parseInt(energyParam, 10) : undefined;
 
   let currentRoutine: RoutineSlug | undefined = undefined;
-  let returnUrl = '/dashboard';
-  let returnLabel = 'Dashboard';
+  let initialReturnUrl = '/dashboard';
+  let initialReturnLabel = 'Dashboard';
 
-  if (fromParam === 'morning') {
+  if (fromParam === 'home') {
+    initialReturnUrl = '/';
+    initialReturnLabel = 'Home';
+  } else if (fromParam === 'morning') {
     currentRoutine = 'morning_launchpad';
-    returnUrl = '/routines/morning';
-    returnLabel = 'Morning Launchpad';
+    initialReturnUrl = '/routines/morning';
+    initialReturnLabel = 'Morning Launchpad';
   } else if (fromParam === 'momentum') {
     currentRoutine = 'day_momentum';
-    returnUrl = '/routines/momentum';
-    returnLabel = 'Day Momentum Sprint';
+    initialReturnUrl = '/routines/momentum';
+    initialReturnLabel = 'Day Momentum Sprint';
   } else if (fromParam === 'evening') {
     currentRoutine = 'evening_shutdown';
-    returnUrl = '/routines/evening';
-    returnLabel = 'Evening Shutdown';
+    initialReturnUrl = '/routines/evening';
+    initialReturnLabel = 'Evening Shutdown';
   }
+
+  const [returnUrl, setReturnUrl] = useState(initialReturnUrl);
+  const [returnLabel, setReturnLabel] = useState(initialReturnLabel);
+
+  useEffect(() => {
+    if (!fromParam) {
+      try {
+        const supabase = createClient();
+        supabase.auth.getSession().then(({ data }) => {
+          if (!data?.session) {
+            setReturnUrl('/');
+            setReturnLabel('Home');
+          }
+        }).catch(() => {
+          setReturnUrl('/');
+          setReturnLabel('Home');
+        });
+      } catch {
+        setReturnUrl('/');
+        setReturnLabel('Home');
+      }
+    }
+  }, [fromParam]);
 
   const [selectedCategory, setSelectedCategory] = useState<MicroActivationCategory | 'all'>(() => {
     if (

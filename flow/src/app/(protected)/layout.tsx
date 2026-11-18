@@ -2,12 +2,22 @@ import React from 'react';
 import Link from 'next/link';
 import { BrandLogo } from '@/components/BrandLogo';
 import { URLCleaner } from '@/components/URLCleaner';
+import { createClient } from '@/lib/supabase/server';
 
-export default function ProtectedLayout({
+export default async function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  let isAuthenticated = false;
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase.auth.getUser();
+    isAuthenticated = !!data?.user;
+  } catch {
+    isAuthenticated = false;
+  }
+
   return (
     <div className="min-h-[calc(100vh-8rem)] bg-background">
       <URLCleaner />
@@ -18,7 +28,7 @@ export default function ProtectedLayout({
           <div className="flex h-14 items-center justify-between">
             <div className="flex items-center gap-6">
               <Link
-                href="/dashboard"
+                href={isAuthenticated ? '/dashboard' : '/'}
                 className="flex items-center gap-2 text-foreground hover:opacity-90 transition"
               >
                 <BrandLogo className="h-6 w-6" />
@@ -26,16 +36,33 @@ export default function ProtectedLayout({
               </Link>
 
               <div className="hidden sm:flex items-center gap-1">
-                <Link
-                  href="/dashboard"
-                  className="rounded-lg px-3 py-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/50 transition"
-                >
-                  Dashboard
-                </Link>
+                {isAuthenticated ? (
+                  <Link
+                    href="/dashboard"
+                    className="rounded-lg px-3 py-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/50 transition"
+                  >
+                    Dashboard
+                  </Link>
+                ) : (
+                  <Link
+                    href="/"
+                    className="rounded-lg px-3 py-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/50 transition"
+                  >
+                    Home
+                  </Link>
+                )}
               </div>
             </div>
 
             <div className="flex items-center gap-3">
+              {!isAuthenticated && (
+                <Link
+                  href="/login"
+                  className="rounded-lg px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition"
+                >
+                  Sign In
+                </Link>
+              )}
               <Link
                 href="/unstick"
                 className="inline-flex items-center gap-1.5 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-600 hover:bg-amber-500/20 transition dark:text-amber-400"
